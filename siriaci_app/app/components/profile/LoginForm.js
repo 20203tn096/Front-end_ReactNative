@@ -73,7 +73,7 @@ export default function LoginForm(props) {
         errorMessage={error.password}
       />
       <Button
-        title="Iniciar Sesion"
+        title=" Iniciar Sesion"
         containerStyle={styles.btnContainer}
         buttonStyle={styles.btn}
         icon={

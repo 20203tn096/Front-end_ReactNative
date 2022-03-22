@@ -1,9 +1,9 @@
 import React from "react"
 import { createStackNavigator } from "@react-navigation/stack"
-import Profile from "../screens/Profile";
+import Capsule from "../../screens/capsula/Capsule";
 const Stack = createStackNavigator();
 
-export default function ProfileStack() {
+export default function CapsuleStackResponsable() {
     return (
         <Stack.Navigator
             screenOptions={{
@@ -13,9 +13,9 @@ export default function ProfileStack() {
             }}
         >
             <Stack.Screen
-                name="profileStack"
-                component={ Profile }
-                options={{ title: "Perfil" }}
+                name="capsule"
+                component={ Capsule }
+                options={{ title: "Capsula informativa" }}
             />
             
 

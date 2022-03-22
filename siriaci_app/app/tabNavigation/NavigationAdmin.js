@@ -1,12 +1,24 @@
-import React from 'react';
+import { View, Text } from 'react-native'
+import React from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Icon } from 'react-native-elements';
-import CapsuleStack from './StacksTabPublico/CapsuleStack' 
-import ProfileStack from './StacksTabPublico/InicioSesionStack';
-import ReportStack from './ReportStack';
+import ProfileStack from '../navigation/StacksTabPublico/InicioSesionStack';
+import CapsuleStackAdmin from '../navigation/StacksTabAdmin/CapsuleStackAdmin';
+import ReportStackAdmin from '../navigation/StacksTabAdmin/ReportStackAdmin';
+import UsuarioStackAdmin from '../navigation/StacksTabAdmin/UsuarioStackAdmin';
+import PerfilStackAdmin from '../navigation/StacksTabAdmin/PerfilStackAdmin';
+
+
+//debe ver capsulas y dentro de esto generar más capsulas
+// ver reportes 
+//generar reporte PDF
+//registrar usuarios y verlos
+//perfil
+
+
 const Tab = createBottomTabNavigator();
-export default function Navigation() {
+export default function NavigationAdmin() {
     return (
         <NavigationContainer>
             <Tab.Navigator
@@ -18,21 +30,26 @@ export default function Navigation() {
                     headerShown: false
                 })}
             >
-            
+
                 <Tab.Screen
                     name='capsule'
-                    component={CapsuleStack}
-                    options={{ title: "Inicio" }}
+                    component={CapsuleStackAdmin}
+                    options={{ title: "Capsula informativa" }}
                 />
                 <Tab.Screen
                     name='report'
-                    component={ReportStack}
+                    component={ReportStackAdmin}
                     options={{ title: "Reporte" }}
+                />
+                <Tab.Screen
+                    name='usuario'
+                    component={UsuarioStackAdmin}
+                    options={{ title: "Usuarios" }}
                 />
 
                 <Tab.Screen
-                    name='profile'
-                    component={ProfileStack}
+                    name='perfil'
+                    component={PerfilStackAdmin}
                     options={{ title: "Perfil" }}
                 />
 
@@ -45,14 +62,16 @@ const screenOptions = (route, color) => {
     let iconName;
     switch (route.name) {
         case "capsule":
-            iconName = "home"
+            iconName = "information"
             break;
 
         case "report":
             iconName = "text-box"
             break;
-
-        case "profile":
+        case "usuario":
+            iconName = "account-multiple"
+            break;
+        case "perfil":
             iconName = "account-outline"
             break;
     }
@@ -60,3 +79,4 @@ const screenOptions = (route, color) => {
         <Icon type="material-community" name={iconName} size={22} color={color} />
     )
 }
+

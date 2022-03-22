@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
           height:100,
           width:200,
           backgroundColor:"#fff",
-          borderColor:"#ff0560",
+          borderColor:"#131C45",
           borderWidth:2,
           borderRadius:10,
           justifyContent:"center",
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
 
      },
      text:{
-          color:"#ff0560",
+          color:"#131C45",
           textTransform:"uppercase",
           marginTop:10,
           textAlign:"center"
