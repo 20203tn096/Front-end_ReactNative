@@ -2,12 +2,14 @@ import { StyleSheet, Text, View } from "react-native";
 import React, { useState } from "react";
 import { Input, Button, Icon } from "react-native-elements"
 import { isEmpty } from "lodash";
+import ForgotPassword from "../../screens/profile/ForgotPassword";
+import CreateAccount from "../../screens/profile/CreateAccount";
 import Loading from "../Loading";
 
 
 export default function LoginForm(props) {
   const { navigation,toastRef } = props;
-  console.log(toastRef);
+ // console.log(toastRef);
   const [loading, setLoading] = useState(false);
   //posicion 0 get, 1 set
 
@@ -17,7 +19,7 @@ export default function LoginForm(props) {
 
   const change = (event, type) => {
     setFormData({ ...formData, [type]: event.nativeEvent.text });
-    console.log(formData);
+    //console.log(formData);
   };
 
   const login = () => {
@@ -27,7 +29,12 @@ export default function LoginForm(props) {
         password: "Campo obligatorio*",
       });
     } else {
-      setLoading(true);
+
+      setError({
+        email: "",
+        password: "",
+      });
+      setLoading(false);
       setError({
         email: "",
         password: "",
@@ -48,7 +55,7 @@ export default function LoginForm(props) {
             color="#131c46"
           />
         }
-        label="Correo Electronico"
+        label="Correo Electronico:*"
         containerStyle={styles.containerInput}
         labelStyle={styles.labelInput}
         onChange={(event) => change(event, "email")}
@@ -79,14 +86,14 @@ export default function LoginForm(props) {
         icon={
           <Icon name="sign-in" type="font-awesome" color="#fff" size={20} />
         }
-        iconContainerStyle={{ marginRight: 10 }}
+        iconContainerStyle={{ marginRight: 20 }}
         onPress={login}
       />
-        <Text style={styles.textCreateAccount1}  onPress={() => navigation.navigate("userCreate")}>
+        <Text style={styles.textCreateAccount1}  onPress={() => navigation.navigate("forgotPassword")}>
         
         ¿Has olvidado tu contraseña?
       </Text>
-      <Text style={styles.textCreateAccount}  onPress={() => navigation.navigate("userCreate")}>
+      <Text style={styles.textCreateAccount}  onPress={() => navigation.navigate("createAccount")}>
         <Icon
           type="material-community"
           name="account-plus"
